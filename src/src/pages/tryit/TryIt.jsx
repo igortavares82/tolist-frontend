@@ -1,12 +1,15 @@
 import React from 'react';
-import { Container, Row, Col } from 'shards-react';
+import { Container, Card, Col } from 'shards-react';
 
-const TryIt = () => {
-    return(
-        <Container fluid className='main-content-container px-4'>
-            <Row>
-                <p>Test do Igor.</p>
-            </Row>
+import HNavbar from '../../components/navbars/HNavbar';
+import Search from '../../components/search/Search';
+
+const TryIt = _ => {
+    
+    return (
+        <Container fluid className="main-content-container">
+            <HNavbar />
+            <Search />
         </Container>
     );
 }
