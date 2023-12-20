@@ -1,17 +1,17 @@
 import React from 'react';
-import { Container, Card, Col } from 'shards-react';
-
-import HNavbar from '../../components/navbars/HNavbar';
 import Search from '../../components/search/Search';
+import Layout from '../../components/layout/Layout';
 
 const TryIt = _ => {
     
     return (
-        <Container fluid className="main-content-container">
-            <HNavbar />
-            <Search />
-        </Container>
-    );
+        <div>
+            <Layout>
+                <Search />
+            </Layout>
+        </div>
+        
+    ); 
 }
 
 export default TryIt;

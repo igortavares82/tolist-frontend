@@ -8,16 +8,20 @@ import {
     Card, 
     CardHeader, 
     ListGroup, 
-    ListGroupItem } 
+    ListGroupItem,
+    InputGroup,
+    InputGroupAddon,
+    Button
+ } 
 from 'shards-react';
 
 const Search = props => {
     
     return (
-        <Container className="main-content-container px-4">
-            <Card small className="mb-3">
-                <CardHeader className="border-bottom">
-                    <h4 className="m-0">Try It!</h4>
+        <Container className="main-content-container px-3">
+            <Card small className="mb-2">
+                <CardHeader>
+                    <h4 className="m-0">Search your product.</h4>
                 </CardHeader>
                 <ListGroup flush>
                     <ListGroupItem className="p-3">
@@ -26,9 +30,12 @@ const Search = props => {
                                 <Form>
                                     <Row form>
                                         <Col md="12" className="form-group">
-                                            <label htmlFor=""></label>
-                                            <FormInput  id="search"
-                                                        placeholder="Search" />
+                                            <InputGroup>
+                                                <FormInput id="search" placeholder="Type a product name such as rice" />
+                                                <InputGroupAddon type="append">
+                                                    <Button theme="primary">Search</Button>
+                                                </InputGroupAddon>
+                                            </InputGroup>
                                         </Col>
                                     </Row>
                                 </Form>
