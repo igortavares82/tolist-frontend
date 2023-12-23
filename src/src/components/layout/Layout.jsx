@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Col } from 'shards-react';
+import { Container, Card, Col, Row } from 'shards-react';
 
 import HNavbar from '../navbars/HNavbar';
 import Footer from '../footer/Footer';
@@ -15,8 +15,12 @@ const Layout = props => {
         :
         <>
             <HNavbar />
-            <Container fluid className="main-content-container mb-4">
-                {props.children}
+            <Container fluid className="main-content-container px-4">
+                <Row>
+                    <Col className="col-lg mb-4">
+                        {props.children}
+                    </Col>
+                </Row>
             </Container>
             <Footer />
         </>

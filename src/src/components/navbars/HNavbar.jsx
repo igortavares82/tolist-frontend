@@ -23,13 +23,13 @@ const HNavbar = props => {
                     <Col lg="6" sm="12">
                         <Nav justified className="navbar">
                             <NavItem className={setActive('try-it')}>
-                                <NavLink href="/try-it">TRY IT</NavLink>
-                            </NavItem>
-                            <NavItem className={setActive('signin')}>
-                                <NavLink href="#">SIGN IN</NavLink>
+                                <NavLink href="/try-it">try it</NavLink>
                             </NavItem>
                             <NavItem className={setActive('signup')}>
-                                <NavLink href="#">SIGN UP</NavLink>
+                                <NavLink href="/signup">sign up</NavLink>
+                            </NavItem>
+                            <NavItem className={setActive('signin')}>
+                                <NavLink href="/signin">sign in</NavLink>
                             </NavItem>
                         </Nav>
                     </Col>

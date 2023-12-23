@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, Row, Col } from 'shards-react';
+import { Container, Row, Col, Nav } from 'shards-react';
 
 const Footer = _ => {
 
     return (
-        <div className="footer">
+        <footer className="footer main-footer d-flex p-2 px-3 bg-white">
              <Container>
                 <Row>
                     <Col>© 2023, made by Standard CO</Col>
@@ -16,7 +16,7 @@ const Footer = _ => {
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </footer>
     );
 }
 
