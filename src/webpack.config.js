@@ -1,38 +1,52 @@
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/index.js',
     output: {
-        path: __dirname + 'public',
-        filename: './app.js'
+        path:  path.resolve(__dirname, 'dist'),
+        filename: 'main.js'
     },
     devServer: {
-        port: 8080,
-        contentBase: './public'
+        port: 8080
     },
     resolve: {
         extensions: ['', '.js', '.jsx'],
         alias: {
-            modules: __dirname + '/node_modules'
+            modules: path.resolve(__dirname, 'node_modules'),
         }
     },
-    plugins: [],
+    plugins: [
+        new MiniCssExtractPlugin(), 
+        new HtmlWebpackPlugin({
+            template: "public/index.html",
+      })],
     module: {
-        loaders: [{
-            test: /\.js[x]?$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-                presets: ['es2015', 'react'],
-                plugins: ['transform-object-rest-spread']
+        rules: [
+            {
+                test: /\.js[x]?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            "@babel/env", 
+                            ["@babel/preset-react", {"runtime": "automatic"}]
+                        ]
+                    }
+                }
+            },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
+            },
+            {
+                test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,
+                loader: 'file-loader'
             }
-        }, {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-        }, {
-            test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,
-            loader: 'file'
-        }]
+        ]
     }
 }

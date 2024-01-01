@@ -15,16 +15,16 @@ export default [
     {
         path: '/try-it',
         layout: null,
-        component: <TryIt />
+        component: null
     },
     {
         path: '/signup',
         layout: null,
-        component: <SignUp />
+        component: null
     },
     {
         path: '/signin',
         layout: null,
-        component: <SignIn />
+        component: null
     }
 ];

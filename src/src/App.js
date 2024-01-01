@@ -1,14 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; 
+
+import Outline from './components/layout/Outline'
 import routes from './routes';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'shards-ui/dist/css/shards.min.css';
-import './styles/tolyst.css'
+// https://demos.creative-tim.com/muse-ant-design-dashboard/#/docs/layout
+// https://demos.creative-tim.com/muse-ant-design-dashboard/?_ga=2.210187475.715017321.1704127969-1319543763.1702330450#/dashboard
 
-// https://designrevision.com/demo/shards-dashboard-lite-react/blog-overview
-// https://designrevision.com/docs/shards-react/component/nav
-
+/*
 export default props => (
     
     <Router basename={process.env.REACT_APP_BASENAME || ''}>
@@ -24,3 +23,10 @@ export default props => (
         </div>      
     </Router>
 );
+*/
+
+export default props => (
+    <Outline>
+        Hello wrold.
+    </Outline>
+)
