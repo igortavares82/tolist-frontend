@@ -5,19 +5,25 @@ const { Footer, Slider, Content } = Layout;
 const Outline = props => {
 
     const lg = { span: 8 }
-    const sm = {}
+    const config = {
+        lg: {
+            left: { span: 4 },
+            middle: { span: 16 },
+            right: { span: 4 }
+        }
+    }
 
     return (
         <>
             <Layout>
-                <Header lg={lg} />
+                <Header config={config} />
                 <Content>
                     <Row>
-                        <Col lg={lg}></Col>
-                        <Col lg={lg}>
+                        <Col></Col>
+                        <Col>
                             {props.children}
                         </Col>
-                        <Col lg={lg}></Col>
+                        <Col></Col>
                     </Row>
                 </Content>
                 <Footer>Footer</Footer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; 
 
-import Outline from './components/layout/Outline'
+import Outline from './components/outline/Outline'
 import routes from './routes';
 
 // https://demos.creative-tim.com/muse-ant-design-dashboard/#/docs/layout

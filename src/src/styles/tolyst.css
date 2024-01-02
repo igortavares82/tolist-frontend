@@ -1,3 +1,8 @@
-
-@import 'header.css';
-@import 'footer.css';
+@import url('https://fonts.cdnfonts.com/css/air-strip-arabic');
+@import '../../node_modules/antd/dist/antd.compact.min.css';
+@import 'outline.css';
+                
+body {
+    font-size: 17px;
+    color: red;
+}

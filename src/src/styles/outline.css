@@ -1,0 +1,14 @@
+.outline-header {
+    background-color: #fafafa;
+    box-shadow: 0px 10px 10px #bfbfbf;
+}
+
+.outline-header span.brand {
+    color: #11a5fa;
+    font-size: 35px;
+    font-family: 'Air Strip Arabic', sans-serif;
+}
+
+.outline-header ul.menu-horizontal {
+
+}
