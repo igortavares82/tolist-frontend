@@ -1,10 +1,10 @@
-import { Layout } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import Header from './Header'
 const { Footer, Slider, Content } = Layout;
 
 const Outline = props => {
 
-    const lg = { span: 4 }
+    const lg = { span: 8 }
     const sm = {}
 
     return (
@@ -12,7 +12,13 @@ const Outline = props => {
             <Layout>
                 <Header lg={lg} />
                 <Content>
-                    {props.children}
+                    <Row>
+                        <Col lg={lg}></Col>
+                        <Col lg={lg}>
+                            {props.children}
+                        </Col>
+                        <Col lg={lg}></Col>
+                    </Row>
                 </Content>
                 <Footer>Footer</Footer>
             </Layout>

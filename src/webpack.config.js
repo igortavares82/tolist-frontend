@@ -8,23 +8,21 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path:  path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
+        filename: '[name].js'
     },
     devServer: {
-        port: 8080
+        port: 3000
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['', '.js', '.jsx', '.css'],
         alias: {
-            modules: path.resolve(__dirname, 'node_modules'),
+            modules: [path.resolve(__dirname, 'node_modules')],
         }
     },
     plugins: [
         new MiniCssExtractPlugin(), 
-        new HtmlWebpackPlugin({
-            template: "public/index.html",
-      })],
-    module: {
+        new HtmlWebpackPlugin({template: "public/index.html"})],
+    module: {  
         rules: [
             {
                 test: /\.js[x]?$/,
@@ -41,7 +39,10 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"]
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ]
             },
             {
                 test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,

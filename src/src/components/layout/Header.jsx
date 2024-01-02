@@ -4,7 +4,7 @@ const { Header: AntHeader } = Layout;
 const Header = props => {
 
     return (
-        <AntHeader style={{ background: "#fafafa" }}>
+        <AntHeader className="tolyst-header" style={{ background: "#fafafa" }}>
             <Row>
                 <Col {...props}>
                     .ToLyst
