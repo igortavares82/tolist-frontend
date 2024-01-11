@@ -1,11 +1,19 @@
 import { Layout, Row, Col } from 'antd';
-import Header from './Header'
-const { Footer, Slider, Content } = Layout;
+import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
+
+import routes from '../../routes';
+import Header from './Header';
+import Content from './Content';
+import Footer from './Footer';
 
 const Outline = props => {
 
-    const lg = { span: 8 }
     const config = {
+        sm: {
+            left: { span: 0 },
+            middle: { span: 24 },
+            right: { span: 0 }
+        },
         lg: {
             left: { span: 4 },
             middle: { span: 16 },
@@ -15,19 +23,24 @@ const Outline = props => {
 
     return (
         <>
-            <Layout>
-                <Header config={config} />
-                <Content>
-                    <Row>
-                        <Col></Col>
-                        <Col>
-                            {props.children}
-                        </Col>
-                        <Col></Col>
-                    </Row>
-                </Content>
-                <Footer>Footer</Footer>
+            
+            <Layout className="outline-box">
+                <div className='outline-box-content'>
+                    <Header config={config} />
+                    <Content config={config} {...props}>
+                        <Routes>
+                            {routes.map((route, index) => {
+                                return (<Route  key={index} 
+                                                path={route.path} 
+                                                exact={route.exact} 
+                                                element={route.component} />);
+                            })}
+                        </Routes>
+                    </Content>
+                    <Footer config={config} />
+                </div>
             </Layout>
+            
         </>
     );
 }

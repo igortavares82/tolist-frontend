@@ -1,6 +1,22 @@
-.outline-header {
+@import './variables.css';
+
+.outline-box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.outline-box-content {
+    display: contents;
+    height: 100%;
+}
+
+.outline-box .outline-header {
+    color: var(--font-color);
     background-color: #fafafa;
     box-shadow: 0px 10px 10px #bfbfbf;
+    flex: 0 1 auto;
+    height:fit-content;
 }
 
 .outline-header span.brand {
@@ -10,5 +26,25 @@
 }
 
 .outline-header ul.menu-horizontal {
+    font-size: 15px;
+    padding-left: 30%;
+    padding-right: 30%;
+    border: 0;
+    color: var(--font-color);
+    background-color: var(--header-bg-color);
+    height: 100%;
+}
 
+.outline-box .outline-content {
+    color: var(--font-color);
+    padding-top: 2%;
+    padding-bottom: 2%;
+    flex: 1 1 auto;
+}
+
+.outline-box .outline-footer {
+    color: var(--font-color);
+    background-color: var(--header-bg-color);
+    box-shadow: 0px -10px 10px #bfbfbf;
+    flex: 0 1 50px;
 }

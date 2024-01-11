@@ -21,7 +21,12 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin(), 
-        new HtmlWebpackPlugin({template: "public/index.html"})],
+        new HtmlWebpackPlugin({template: "public/index.html"}),
+        new webpack.DefinePlugin({
+            'process.env.REACT_APP_BASENAME': JSON.stringify(process.env.REACT_APP_BASENAME),
+            // ...
+        }),
+    ],
     module: {  
         rules: [
             {
