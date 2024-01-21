@@ -1,38 +1,42 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-import TryIt from './pages/tryit/TryIt';
+import NotFound from './pages/error/NotFound';
+import Search from './pages/search/Search';
 import SignUp from './pages/signup/SignUp';
 import SignIn from './pages/signin/SignIn';
 
 export default [
     {
         path: '/',
-        layout: null,
         exact: true,
         isPublic: true,
         label: null,
-        component: <Navigate to='/try-it' />
+        errorElement: <NotFound />,
+        component: <Navigate to='/search' />
     },
     {
-        path: '/try-it',
-        layout: null,
+        path: '/search',
         isPublic: true,
-        label: 'Try It',
-        component: <TryIt />
+        label: 'Search',
+        component: <Search />
     },
     {
         path: '/signup',
-        layout: null,
         isPublic: true,
-        label: 'Signup',
+        label: 'Sign up',
         component: <SignUp />
     },
     {
         path: '/signin',
-        layout: null,
         isPublic: true,
-        label: 'Signin',
+        label: 'Sign in',
         component: <SignIn />
+    },
+    {
+        path: '*',
+        isPublic: false,
+        label: 'Sign in',
+        component: <NotFound />
     }
 ];

@@ -11,10 +11,21 @@ module.exports = {
         filename: '[name].js'
     },
     devServer: {
+        hot: true,
         port: 3000
     },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.css'],
+        extensions: [
+            '.web.tsx',
+            '.web.ts',
+            '.web.jsx',
+            '.web.js',
+            '.ts',
+            '.tsx',
+            '.js',
+            '.jsx',
+            '.json',
+        ],
         alias: {
             modules: [path.resolve(__dirname, 'node_modules')],
         }
@@ -23,9 +34,8 @@ module.exports = {
         new MiniCssExtractPlugin(), 
         new HtmlWebpackPlugin({template: "public/index.html"}),
         new webpack.DefinePlugin({
-            'process.env.REACT_APP_BASENAME': JSON.stringify(process.env.REACT_APP_BASENAME),
-            // ...
-        }),
+            'process.env.REACT_APP_BASENAME': JSON.stringify(process.env.REACT_APP_BASENAME)
+        })
     ],
     module: {  
         rules: [
@@ -36,8 +46,8 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            "@babel/env", 
-                            ["@babel/preset-react", {"runtime": "automatic"}]
+                            "@babel/preset-react",
+                            ['@babel/preset-env', {targets: {node: 'current'}}]
                         ]
                     }
                 }
@@ -54,5 +64,7 @@ module.exports = {
                 loader: 'file-loader'
             }
         ]
+    },
+    externals: {
     }
 }

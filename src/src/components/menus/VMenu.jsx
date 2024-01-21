@@ -1,12 +1,14 @@
-import react, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Layout, Row, Col, Menu } from 'antd';
 
 import routes from '../../routes';
 
 const VMenu = props => {
 
-    const [state, setState] = useState({ current: '/' });
+    var hrefs = window.location.href.split('/');
+    var path = hrefs[hrefs.length -1];
+    const [state, setState] = useState({ current: `/${path}` });
 
     const handler = e => {
         setState({ current: e.key});

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Outline from './components/outline/Outline';
 import routes from './routes';
 
@@ -8,9 +8,5 @@ import routes from './routes';
 
 export default props => (
     
-    <>
-        <Router>
-            <Outline />
-        </Router>
-    </>
+    <Outline />
 );

@@ -1,0 +1,96 @@
+.search-products-box {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 2%;
+}
+
+.search-no-products-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #e1e1e1;
+    padding-top: 10%;
+}
+
+.search-products-side-bar {
+    float: right;
+    right: 0px;
+    box-shadow: #bfbfbf;
+    position: fixed;
+    z-index: 150;
+}
+
+.search-products-side-bar .search-icon {
+   padding-top: 15%;
+   width: 50px;
+   height: 50px;
+   border-right: none;
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+   box-shadow: 10px 10px 5px #bfbfbf;
+}
+
+.search-products-side-bar .options {
+    background-color: white;
+    height: fit-content;
+    padding-right: 4%;
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    border: 1px solid #d9d9d9;
+    border-bottom-left-radius: 5px;
+    box-shadow: 10px 10px 5px #bfbfbf;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.search-products-side-bar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.search-products-side-bar ul li {
+    margin: 4%;
+}
+
+.search-products-side-bar .ant-divider-inner-text {
+    color: var(--font-color);
+}
+
+.ant-card {
+    box-shadow: 10px 10px 7px #bfbfbf;
+    margin-left: 0%;
+    margin-right: 4%;
+    margin-top: 4%;
+    height: fit-content;
+}
+
+.card-content-wrapper {
+    color: var(--font-color);
+    font-weight: lighter;
+}
+
+.card-content-wrapper button {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-content-wrapper price {
+    font-size: 40px;
+    width: 100%;
+    display: block;
+}
+
+.card-content-wrapper market {
+    width: 100%;
+}

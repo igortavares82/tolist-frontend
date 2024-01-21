@@ -1,0 +1,21 @@
+.page-title {
+    margin: 0 0 0% 0;
+    font-weight: lighter;
+    margin-bottom: 4%;
+}
+
+.page-title p:first-child {
+    font-size: 35px;
+    text-transform:uppercase;
+    margin-bottom: 0;
+    color:var(--title-letter)
+}
+
+.page-title p::first-letter{
+    color: var(--first-letter);
+}
+
+.page-title span:last-child {
+    font-size: 17px;
+    text-transform:lowercase;
+}

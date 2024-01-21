@@ -1,4 +1,8 @@
 :root {
     --font-color: #8c8c8c;
     --header-bg-color: #fafafa;
+    --first-letter: #f94c10;
+    --title-letter: #11a5fa;
+    --input-border: #e6e5e5;
+    --content-bg-color: #8c8c8c;
 }

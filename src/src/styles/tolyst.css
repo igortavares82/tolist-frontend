@@ -1,5 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/air-strip-arabic');
-@import '../../node_modules/antd/dist/antd.compact.min.css';
+@import '../../node_modules/antd/dist/reset.css';
+@import 'page-search.css';
+@import 'components.css';
 @import 'tolyst-media';
 @import 'outline.css';
                 
@@ -9,4 +11,26 @@ body {
 
 div#root {
     height: 100%;
+    max-height: 5000px;
+}
+
+.tolyst-input {
+    height: 35 !important;
+    background-color: #fafafa !important;
+}
+
+.not-found {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    overflow-wrap: break-word;
+    color: var(--font-color);
+}
+
+.not-found:first-child {
+    font-size: 30px !important;
+}
+
+.brand {
+    float: left;
 }
