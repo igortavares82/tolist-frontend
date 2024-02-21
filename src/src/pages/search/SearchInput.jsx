@@ -18,15 +18,15 @@ const SearchInput = props => {
 
     return (
         <div>
-            <Search     placeholder="product name" 
-                        enterButton="go" 
-                        size='large' 
-                        name='search'
-                        onChange={(e) => onChange(e.target.value)} />
+            <Input  placeholder="product name" 
+                    enterButton="go" 
+                    size='large' 
+                    name='search'
+                    onChange={(e) => onChange(e.target.value)} />
         </div>
     );
 }
 
-const mapStateToProps = state => ({name: state.search.name}) 
+const mapStateToProps = state => ({name: state.search.filter.name}) 
 const mapDispatchToProps = dispatch => bindActionCreators({configureName}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);

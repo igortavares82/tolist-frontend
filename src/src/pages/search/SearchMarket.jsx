@@ -40,6 +40,6 @@ const SearchMarket = props => {
     );
 }
 
-const mapStateToProps = state => ({marketIds: state.search.marketIds}) 
+const mapStateToProps = state => ({marketIds: state.search.filter.marketIds}) 
 const mapDispatchToProps = dispatch => bindActionCreators({configureMarkets}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(SearchMarket);

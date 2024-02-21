@@ -41,6 +41,6 @@ const SearchOrder = props => {
     );
 }
 
-const mapStateToProps = state => ({order: state.search.order}) 
+const mapStateToProps = state => ({order: state.search.filter.order}) 
 const mapDispatchToProps = dispatch => bindActionCreators({configureOrder}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(SearchOrder);

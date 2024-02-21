@@ -42,6 +42,6 @@ const SearchPrice = props => {
     );
 }
 
-const mapStateToProps = state => ({price: state.search.price}) 
+const mapStateToProps = state => ({price: state.search.filter.price}) 
 const mapDispatchToProps = dispatch => bindActionCreators({configurePrice}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPrice);
