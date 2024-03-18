@@ -99,3 +99,10 @@
     box-shadow: 10px 10px 5px #bfbfbf;
     margin: 2% 0% 0% 2%;
 }
+
+.no-data-to-display {
+    color: var(--font-color);
+    font-size:large;
+    font-weight: lighter;
+    margin-top: 2%;
+}

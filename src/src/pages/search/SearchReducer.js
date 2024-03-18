@@ -30,6 +30,7 @@ export default (state = INITIAL_STATE, action) => {
         
         case SearchReducerType.NAME_CONFIGURED:
             {
+                console.log(555, state)
                 let filter = { ...state.filter, name: action.payload };
                 return { ...state, filter: filter }
             }

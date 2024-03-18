@@ -9,20 +9,27 @@ const { Search } = Input;
 
 const SearchInput = props => {
 
-    const [nameInput, setNameInput] = useState(props.name);
+    const [name, setName] = useState(props.name);
+    
+    const setProductName = (value) => {
+        
+        setName(value);
+        props.configureName(value);
+    }
 
-    const onChange = (value) => {
+    const clearField = _ => {
 
-        props.configureName(value)
+        setName(null);
+        props.configureName(null);
     } 
 
     return (
         <div>
-            <Input  placeholder="product name" 
-                    enterButton="go" 
-                    size='large' 
-                    name='search'
-                    onChange={(e) => onChange(e.target.value)} />
+            <Search placeholder="product name" 
+                    enterButton="X" 
+                    value={name}
+                    onChange={(e) => setProductName(e.target.value)}
+                    onSearch={clearField} />
         </div>
     );
 }
