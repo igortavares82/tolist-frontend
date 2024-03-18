@@ -62,7 +62,16 @@ export default (state = INITIAL_STATE, action) => {
             }
 
         case SearchReducerType.PRODUCTS_SELECTED:
-            return { ...state, selected: action.payload }
+            {
+                state.products.selected.push(action.payload);
+                return { ...state, selected: state.products.selected }
+            }
+        case SearchReducerType.PRODUCTS_UNSELECTED:
+            {
+                var index = state.products.selected.indexOf(action.payload);
+                state.products.selected.splice(index, 1);
+                return { ...state, selected: state.products.selected }
+            }
 
         default:
             return state;
