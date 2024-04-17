@@ -1,4 +1,5 @@
 import SearchReducerType from '../../types/SearchReducerType';
+import React, { useState } from 'react';
 
 const INITIAL_STATE = {
 
@@ -22,6 +23,8 @@ const INITIAL_STATE = {
         searched: [],
         selected: []
     },
+    view: "search",
+    searchrBar: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -35,8 +38,10 @@ export default (state = INITIAL_STATE, action) => {
             }
 
         case SearchReducerType.PRICE_CONFIGURED:
-            return { ...state, price: action.payload } 
-        
+            {
+                let filter = { ...state.filter, price: action.payload };
+                return { ...state, filter: filter } 
+            }
         case SearchReducerType.MARKET_CONFIGURED:
             {
                 let filter = { ...state.filter, marketIds: action.payload }
@@ -60,7 +65,11 @@ export default (state = INITIAL_STATE, action) => {
                 let products = { ...state.products, searched: searched }
                 return { ...state, products: products };
             }
-
+        case SearchReducerType.GET_PRODUCTS: 
+            {
+                let result = action.payload == 'search' ? state.products.searched : state.products.selected;
+                return { ...state, test: result }
+            }
         case SearchReducerType.PRODUCTS_SELECTED:
             {
                 state.products.selected.push(action.payload);
@@ -72,7 +81,10 @@ export default (state = INITIAL_STATE, action) => {
                 state.products.selected.splice(index, 1);
                 return { ...state, selected: state.products.selected }
             }
-
+        case SearchReducerType.SEARCHBAR_STATE_CHANGED:
+            {
+                return { ...state, searchrBar: !state.searchrBar }
+            }
         default:
             return state;
     }

@@ -10,10 +10,22 @@ import { FaMinus } from "react-icons/fa";
 import { GrLinkNext } from "react-icons/gr";
 
 const CardContent = props => {
-
-    const product = props.product;
-    const selected = props.products.selected;
     
+    const product = props.product;
+    const view = props.view;
+    const selected = props.products.selected;
+
+    const selectedSum = _ => {
+
+        let sum = selected.map(it => it.price).reduce((a, b) => a + b, 0);
+        return (Math.round(sum * 100) / 100).toFixed(2);
+    }
+
+    const setSelectedCount = _ => {
+
+        props.setSelectedCount(selected.lenght);
+    }
+
     const selectProduct = _ => {
         
         if (selected.map(it => it.id).includes(product.id))
@@ -22,6 +34,8 @@ const CardContent = props => {
         var card = document.getElementById(product.id);
         card.style.opacity = "50%";
         props.selectedProducts(product);
+        props.setSelectedCount(selected.length);
+        props.setSelectedSum(selectedSum());
     }
 
     const unselectProduct = _ => {
@@ -29,7 +43,12 @@ const CardContent = props => {
         var card = document.getElementById(product.id);
         card.style.opacity = "100%";
         props.unselectedProduct(product);
+        props.setSelectedCount(selected.length);
+        props.setSelectedSum(selectedSum());
 
+        if (view == "list") {
+            card.remove();
+        }
     }
 
     const isSelected = _ => selected.map(it => it.id).includes(product.id)

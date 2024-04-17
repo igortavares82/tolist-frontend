@@ -2,38 +2,43 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { configureName } from './SearchActions';
+import { configureName, searchedProducts } from './SearchActions';
 import { Input } from 'antd';
+import { FiDelete } from "react-icons/fi";
 
 const { Search } = Input;
 
 const SearchInput = props => {
 
     const [name, setName] = useState(props.name);
-    
+
     const setProductName = (value) => {
         
         setName(value);
         props.configureName(value);
-    }
-
-    const clearField = _ => {
-
-        setName(null);
-        props.configureName(null);
     } 
+
+    const searchedProducts = e => {
+
+        if (e.key != "Enter")
+            return;
+
+        props.searchedProducts();
+        props.changeSearchBarState();
+    }
 
     return (
         <div>
             <Search placeholder="product name" 
-                    enterButton="X" 
-                    value={name}
+                    id="product-name-input"
+                    enterButton={<FiDelete size={20} style={{marginTop: '25%'}}/>}
+                    value={props.name}
                     onChange={(e) => setProductName(e.target.value)}
-                    onSearch={clearField} />
+                    onKeyDown={searchedProducts} />
         </div>
     );
 }
 
 const mapStateToProps = state => ({name: state.search.filter.name}) 
-const mapDispatchToProps = dispatch => bindActionCreators({configureName}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({configureName, searchedProducts}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);

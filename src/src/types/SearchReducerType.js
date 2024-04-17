@@ -7,7 +7,9 @@ const SearchReducerType = Object.freeze({
     GET_SUMMARY: 5,
     PRODUCTS_SEARCHED: 6,
     PRODUCTS_SELECTED: 7,
-    PRODUCTS_UNSELECTED: 8
+    PRODUCTS_UNSELECTED: 8,
+    GET_PRODUCTS: 9,
+    SEARCHBAR_STATE_CHANGED: 10,
 });
 
 export default SearchReducerType;

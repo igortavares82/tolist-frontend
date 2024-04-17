@@ -1,4 +1,4 @@
-import SearchReducerType from '../../types/SearchReducerType'
+import SearchReducerType from '../../types/SearchReducerType';
 
 export function configureName(values) {
 
@@ -90,6 +90,14 @@ export function searchedProducts() {
     }
 }
 
+export function getProducts(view) {
+
+    return {
+        type: SearchReducerType.GET_PRODUCTS,
+        payload: view
+    }
+}
+
 export function selectedProducts(values) {
 
     return {
@@ -103,5 +111,13 @@ export function unselectedProduct(values) {
     return {
         type: SearchReducerType.PRODUCTS_UNSELECTED,
         payload: values
+    }
+}
+
+export function changeSearchBarState(){
+
+    return {
+        type: SearchReducerType.SEARCHBAR_STATE_CHANGED,
+        payload: null
     }
 }

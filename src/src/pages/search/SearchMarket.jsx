@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { configureMarkets } from './SearchActions';
-import { Form, Switch } from 'antd';
+import { Form, Switch, Row, Col } from 'antd';
 
 var markets = [
     { id: 1, name: 'Pingo Doce', isEnabled: true },
@@ -27,16 +27,16 @@ const SearchMarket = props => {
     }
 
     return (
-        <ul>
-            {
-                markets.map((market, index) => 
-                {
-                    return (
-                        <li key={index}><Switch defaultChecked onChange={(checked) => onChange(checked, market.id)}/>{` ${market.name}`}</li>
-                    );
-                })
-            }
-        </ul>
+        markets.map((market, index) =>  {
+                    
+            return (
+                <Row style={{marginBottom: '2%'}}>
+                    <Col>
+                        <Switch defaultChecked onChange={(checked) => onChange(checked, market.id)}/>{` ${market.name}`}
+                    </Col>
+                </Row>
+            );
+        })
     );
 }
 
