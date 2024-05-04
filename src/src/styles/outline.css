@@ -17,6 +17,8 @@
     flex: 0 1 auto;
     height:fit-content;
     width: auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .outline-header span.brand {
@@ -27,14 +29,11 @@
 
 .outline-header ul.menu-horizontal {
     font-size: 15px;
-    padding-left: 30%;
-    padding-right: 30%;
+    float: right;
     border: 0;
     color: var(--font-color);
     background-color: var(--header-bg-color);
     height: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 .outline-box .outline-content {
@@ -47,7 +46,8 @@
 .outline-box .outline-footer {
     color: var(--font-color);
     background-color: var(--header-bg-color);
-    box-shadow: 0px -10px 10px #bfbfbf;
+    --box-shadow: 0px -10px 10px #bfbfbf;
+    border-top: 1px solid #bfbfbf;
     flex: 0 1 50px;
     z-index: 1000;
 }

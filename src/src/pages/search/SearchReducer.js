@@ -63,7 +63,9 @@ export default (state = INITIAL_STATE, action) => {
                 }
 
                 let products = { ...state.products, searched: searched }
-                return { ...state, products: products };
+                let filter = { ...state.filter, page: { index: 1, limit: 10 }  }
+
+                return { ...state, products: products, filter: filter };
             }
         case SearchReducerType.GET_PRODUCTS: 
             {
@@ -84,6 +86,11 @@ export default (state = INITIAL_STATE, action) => {
         case SearchReducerType.SEARCHBAR_STATE_CHANGED:
             {
                 return { ...state, searchrBar: !state.searchrBar }
+            }
+        case SearchReducerType.PRODUCTS_LOADED_MORE:
+            {
+                let page = { ...state.page, index: state.index + 1 }
+                return { ...state, page: page }
             }
         default:
             return state;

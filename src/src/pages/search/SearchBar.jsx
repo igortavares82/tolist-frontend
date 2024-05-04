@@ -36,7 +36,6 @@ const SearchBar = props => {
     const searchedProducts = _ => {
 
         props.searchedProducts();
-        closeDrawer();
     }
 
     const isDisabled = _ => {

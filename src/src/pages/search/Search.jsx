@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { Avatar, Card, Row, Popover, Button, Empty, Col, Modal, Input, Alert } from 'antd';
 
-import { searchedProducts, selectedProducts, getProducts, changeSearchBarState } from './SearchActions';
+import { searchedProducts, selectedProducts, loadedMoreProducts, changeSearchBarState } from './SearchActions';
 import PageTitle from '../../components/page-title/PageTitle';
 import NotFoundImg from '../../assets/bg-no-picture-128x128.png';
 import SearchBar from './SearchBar';
@@ -37,9 +37,10 @@ const Search = props => {
     const [selectedSum, setSelectedSum] = useState(0);
     const [searchBarState, setSearchBarState] = useState(props.searchrBar);
 
-    const getProducts = _ => {
+    const loadedMoreProducts = _ => {
 
-        products = props.products.searched;
+        props.loadedMoreProducts();
+        props.searchedProducts();
     }
     
     const opacity = (value) => selected.map(it => it.id).includes(value.id) ? '50%' : '100%';
@@ -140,7 +141,7 @@ const Search = props => {
                                     icon={<TfiViewListAlt />}>
                     <FloatButton icon={<CiSearch />} onClick={() => changeSearchBarState(true)} />
                     <FloatButton icon={modalOpen == true ? <AiFillSave /> : <RiSave2Line />} onClick={showModal} />
-                    <FloatButton icon={<IoReloadOutline />} onClick={getProducts} />
+                    <FloatButton icon={<IoReloadOutline />} onClick={loadedMoreProducts} />
                     <FloatButton    icon={view == "search" ? <TfiViewListAlt /> : <FaThList />} 
                                     badge={{ count: getBadge() }}  
                                     onClick={changeView} />
@@ -159,5 +160,5 @@ const Search = props => {
 }
 
 const mapStateToProps = state => ({ products: state.search.products, view: state.search.view, searchrBar: state.search.searchrBar });
-const mapDispatchToProps = dispatch => bindActionCreators({searchedProducts, selectedProducts, getProducts, changeSearchBarState}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({searchedProducts, selectedProducts, loadedMoreProducts, changeSearchBarState}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

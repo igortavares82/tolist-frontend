@@ -10,6 +10,7 @@ const SearchReducerType = Object.freeze({
     PRODUCTS_UNSELECTED: 8,
     GET_PRODUCTS: 9,
     SEARCHBAR_STATE_CHANGED: 10,
+    PRODUCTS_LOADED_MORE: 11
 });
 
 export default SearchReducerType;

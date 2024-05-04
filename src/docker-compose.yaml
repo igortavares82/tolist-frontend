@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  backend:
+    image: src-backend:latest
+    environment:
+      ConnectionStrings__MongoDbConnection__ConnectionString: "mongodb://database:27017"
+      ASPNETCORE_URLS: http://+:5118
+    ports: 
+      - 5119:5118
+    restart: always
+    networks:
+      - tolyst
+    depends_on:
+      - database
+  database:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - "mongo-volume:/data/db"
+    networks:
+      - tolyst
+networks:
+  tolyst:
+    external: true
+volumes:
+  mongo-volume:

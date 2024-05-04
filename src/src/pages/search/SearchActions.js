@@ -121,3 +121,11 @@ export function changeSearchBarState(){
         payload: null
     }
 }
+
+export function loadedMoreProducts() {
+
+    return {
+        type: SearchReducerType.PRODUCTS_LOADED_MORE,
+        payload: null
+    }
+}
