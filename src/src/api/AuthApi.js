@@ -1,5 +1,6 @@
 import Api from './Api';
 import NotificationType from '../types/NotificationType';
+import { jwtDecode } from 'jwt-decode';
 
 export default class AuthApi extends Api {
 
@@ -20,5 +21,20 @@ export default class AuthApi extends Api {
              })
              .then(resp => handler(resp))
              .catch(error => super.catch(error, "Not found", "User could't be found. Try again."));
+    }
+
+    isAuthenticated() {
+        let user = this.getUser();
+        return user != null;
+    }
+
+    getUser() {
+
+        try {
+            let token = sessionStorage.getItem("token");
+            return jwtDecode(token);
+        } catch(e) {
+            return null;
+        }
     }
 }

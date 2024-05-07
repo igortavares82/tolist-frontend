@@ -1,11 +1,12 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 
 import NotFound from './pages/error/NotFound';
 import Search from './pages/search/Search';
 import SignUp from './pages/signup/SignUp';
 import SignIn from './pages/signin/SignIn';
-import ForgotPassword from './pages/signin/ForgotPassword'
+import ForgotPassword from './pages/signin/ForgotPassword';
+import { BsGear } from "react-icons/bs";
 
 import RouteType from "./types/RouteType";
 
@@ -13,43 +14,44 @@ export default [
     {
         path: '/',
         exact: true,
-        isPublic: true,
         type: RouteType.STATIC,
         label: null,
         errorElement: <NotFound />,
-        component: <Navigate to='/search' />
+        component: <Navigate to="/search" />
     },
     {
-        path: '/search',
-        isPublic: true,
+        key: "search",
+        path: "/search",
         type: RouteType.STATIC,
-        label: 'Search',
+        label: (<Link to="/search">Search</Link>),
         component: <Search />
     },
     {
+        key: "signup",
         path: '/signup',
-        isPublic: true,
         type: RouteType.PUBLIC,
-        label: 'Sign up',
+        label: (<Link to="/signup">Sign up</Link>),
         component: <SignUp />
     },
     {
+        key: "signin",
         path: '/signin',
-        isPublic: true,
         type: RouteType.PUBLIC,
-        label: 'Sign in',
+        label: (<Link to="/signin">Sign in</Link>),
         component: <SignIn />
     },
     {
         path: '/forgot-password',
-        isPublic: false,
         type: null,
         label: 'Forgot password',
         component: <ForgotPassword />
     },
     {
+        key: "account",
+        
+    },
+    {
         path: '*',
-        isPublic: false,
         type: null,
         label: 'Sign in',
         component: <NotFound />
