@@ -9,9 +9,15 @@ import NotificationType from '../types/NotificationType';
 
 export default class Api {
     
-    constructor() {
+    constructor(useNotification = true) {
 
-        [this.api, this.contextHolder] = notification.useNotification();
+        this.useNotification = useNotification;
+
+        if (useNotification == true) {
+            
+            [this.api, this.contextHolder] = notification.useNotification();
+        }
+
         this._axios = axios.create({
             baseURL: process.env.BASE_URL
         });
@@ -29,12 +35,19 @@ export default class Api {
                    .post(url, data);
     }
 
+    patch(url, data) {
+
+        return this._axios
+                   .patch(url, data);
+    }
+
     catch(error, title, description) {
 
         console.error(error.response);
 
         if (!title && !description)
             this.notify("Connection error", "Something went wrong. Try again.",  NotificationType.ERROR);
+        
         else
             this.notify(title, description, NotificationType.ERROR);
     }
@@ -58,5 +71,14 @@ export default class Api {
             description: description,
             icon: icon
         });
+    }
+
+    changeScreen(path, timer = 1500) {
+
+        setTimeout(() => {
+
+            window.location.href = `/#/${path}`;
+            window.location.reload();
+        }, timer);
     }
 }

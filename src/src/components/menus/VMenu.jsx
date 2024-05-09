@@ -24,7 +24,8 @@ const VMenu = props => {
                 mode="horizontal" 
                 selectedKeys={[current]} 
                 onClick={handler} 
-                items={items} /> 
+                items={items} 
+                style={{minWidth: "31%"}}/> 
     );
 }
 

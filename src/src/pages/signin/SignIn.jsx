@@ -18,7 +18,7 @@ const SignIn = _ => {
     const [form] = Form.useForm();
 
     form.setFieldValue("email", "igor.meier@gmail.com");
-    form.setFieldValue("password", "igor1982");
+    form.setFieldValue("password", "Igor@1982");
 
     const onFinish = _ => {
 
@@ -27,7 +27,7 @@ const SignIn = _ => {
             password: form.getFieldValue("password") 
         };
 
-        authApi.auth(data, (resp) => { console.log(444, resp) });
+        authApi.signin(data);
     }
     
     return (

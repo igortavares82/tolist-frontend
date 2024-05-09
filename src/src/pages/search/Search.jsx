@@ -118,8 +118,12 @@ const Search = props => {
 
     useEffect(() => {
 
-        var resultContainer = createRoot(document.getElementById('products-container'));
-        resultContainer.render(renderProducts());
+        let container = document.getElementById('products-container');
+
+        if (container) {
+            let resultContainer = createRoot(document.getElementById('products-container'));
+            resultContainer.render(renderProducts());
+        }
         
     }, [products.length, selected.length, view]);
 

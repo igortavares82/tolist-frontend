@@ -1,60 +1,39 @@
-import React from 'react'
+import React from "react";
+import { useLocation } from "react-router-dom";
 import { Form, Input, Button, Select, Row, Col } from 'antd';
-
-import Outline from '../../components/outline/Outline';
+ 
 import PageTitle from '../../components/page-title/PageTitle';
-import Config from '../../Config';
 import { passwordValidation, passworEquality } from '../../common';
-
-import UserApi from "../../api/UserApi";
+import AuthApi from "../../api/AuthApi";
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-const SignUp = props => {
+const UpdatePassword = _ => {
 
-    let userApi = new UserApi();
+    let authApi = new AuthApi();
     const [form] = Form.useForm();
-
-    form.setFieldValue("email", "igor.meier@gmail.com");
-    form.setFieldValue("name", "Igor Tavares");
-    form.setFieldValue("password", "Igor@1982");
-    form.setFieldValue("password-confirmation", "Igor@1982");
-
-    const cleanupForm = (cleanupForm) => {
-
-        if (!cleanupForm)
-            return;
-
-        form.resetFields();
-    }
+    const search = useLocation().search;
+    const token = new URLSearchParams(search).get("token");
 
     const onFinish = _ => {
 
-        let data = { 
-            email: form.getFieldValue("email"), 
-            name: form.getFieldValue("name"),
-            password: form.getFieldValue("password"),
-            role: 1
+        let data = {
+            token: token,
+            newPassword: form.getFieldValue("password")
         };
 
-        userApi.post(data, cleanupForm);
+        authApi.updatePassword(data)
     }
-    
+
     return (
         <>
-            {userApi.contextHolder}
-            <PageTitle title="Sign up" subtitle="It is easy, simple and fast" />
+            {authApi.contextHolder}
+            <PageTitle  title="Update password" subtitle="Update your password"/>
             <Form   form={form} 
                     wrapperCol={{ span: 8, offset: 8 }} 
                     autoComplete='off' 
                     onFinish={onFinish}>
-                <Form.Item name="email" rules={[{ required: true, type: "email" }]}>
-                    <Input size="large" placeholder="email" maxLength="50" autoFocus/>
-                </Form.Item>
-                <Form.Item name="name" rules={[{ required: true }]}>
-                    <Input size="large" placeholder="name" maxLength="50"/>
-                </Form.Item>
                 <Form.Item  name="password" 
                             rules={[{ required: true }, { validator: passwordValidation }]}>
                     <Input.Password size="large" 
@@ -77,4 +56,4 @@ const SignUp = props => {
     );
 }
 
-export default SignUp;
+export default UpdatePassword;
